@@ -11,5 +11,5 @@ async def client_check(request: Request):
 
 @router.get('/')
 async def root():
-    return {'message': 'server is running'}
+    return {'message': 'server is running 2'}
 
