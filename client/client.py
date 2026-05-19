@@ -1,4 +1,5 @@
 import requests
+from shared.models import MathRequest
 
 class APIClient:
     def __init__(self):
@@ -16,7 +17,17 @@ class APIClient:
         )
         return response.json()
 
-client = APIClient()
+    def number_square(self, number: float):
+        response = requests.get(
+            f"{self.base_url}/square",
+            params={"x": number}
+        )
+        return response.json()
 
-print(client.get_root())
-print(client.client_check())
+    def calculate(self, data: MathRequest):
+        response = requests.post(
+            f"{self.base_url}/calculate",
+            json=data.dict()
+        )
+        return response.json()
+
